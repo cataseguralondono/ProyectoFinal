@@ -68,13 +68,24 @@ class NegocioCreacion(CreateView):
     model = Negocio
     success_url = reverse_lazy("Inicio")
     template_name = "negocio_form.html"
-    fields = ['usuario', 'tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion']
+    fields = ['usuario', 'tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
+
+class NegocioDetalle(DetailView):
+    model = Negocio
+    context_object_name = 'negocio'
+    template_name = 'negocio_detalle.html'
 
 class NegocioEdicion(UpdateView):
     model = Negocio
     success_url = reverse_lazy('Inicio')
     template_name = 'negocio_edit.html'
-    fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion']
+    fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
+
+class NegocioEliminar(DeleteView):
+    model = Negocio
+    success_url = reverse_lazy('Lista Negocios')
+    context_object_name = 'negocio'
+    template_name = 'negocio_eliminar.html'
 
 class NegocioLista(ListView):
     context_object_name = 'negocios'

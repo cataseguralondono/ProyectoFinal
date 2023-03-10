@@ -127,4 +127,4 @@ LOGIN_URL = '/login/'
 
 MEDIA_URL = '/imagenes/'
 
-MEDIA_ROOT = 'AppDirectorio'
+MEDIA_ROOT = BASE_DIR / 'AppDirectorio/imagenes'

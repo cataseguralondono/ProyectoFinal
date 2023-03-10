@@ -12,5 +12,14 @@
     {% endif %} 
     
     INICIO
+
+    <div class="container"></div>
+        {% if request.user.is_authenticated %}
+        <div class="container">
+        <li class="nav-item">
+            <span class="text-light"> Hola <strong>{{request.user.first_name}}</strong>!</span>
+        </li>
+        {% endif %}
+    </div>
 </body>
 </html>

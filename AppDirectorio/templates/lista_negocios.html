@@ -9,9 +9,22 @@
 <body>
     <div>
         NEGOCIOS
-        {%for negocio in negocios%}
-            {{negocio.nombre_negocio}}
-        {%endfor%}
+        <div class="row">
+            {% for negocio in negocios %}
+            <div class="col-sm-6 align-items-center">
+                <div class="card-body">
+                <!--<img src="AppDirectorio/imagenes/{{negocio.imagen_negocio}}" class="" width="100px">-->
+                {{negocio.nombre_negocio}}
+                <a href="{% url 'Detalle Negocio' negocio.id %}"><i class="bi bi-eye"></i>detalle</a>
+                {% if user.id == negocio.usuario.id %}
+                <a href="{% url 'Editar Negocio' negocio.id %}"><i class="bi bi-pencil-fill"></i>editar</a>
+                <a href="{% url 'Eliminar Negocio' negocio.id %}"><i class="bi bi-trash text-danger"></i>eliminar</a>
+                <br>
+                {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>

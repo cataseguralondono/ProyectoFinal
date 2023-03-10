@@ -1,0 +1,15 @@
+<div class="container">
+
+    <p><h4>{{negocio.nombre_negocio}}</h4></p>
+    {% if negocio.imagen_negocio %}
+        <p><img src="{{negocio.imagen_negocio.url}}" alt=""></p>
+    {% endif %}
+    <p>Tipo Negocio: {{negocio.tipo_negocio}}</p>
+    <p>Descripcion: {{negocio.descripcion}}</p>
+    <p>Direccion: {{negocio.direccion}}</p>
+    <p>Horario: {{negocio.horario}}</p>
+    <p>Teléfono de Contacto: {{negocio.telefono_contacto}}</p>
+    <p>Email de Contacto: {{negocio.email_contacto}}</p>
+    <p>Fecha Publicación: {{negocio.fecha_publicacion}}</p>
+    
+</div>
