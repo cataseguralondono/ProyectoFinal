@@ -18,6 +18,7 @@
         <div class="container">
         <li class="nav-item">
             <span class="text-light"> Hola <strong>{{request.user.first_name}}</strong>!</span>
+            <a href="{% url 'Agregar Negocio' request.user.pk %}"><i class="bi bi-trash text-danger"></i>Agregar Negocio</a>
         </li>
         {% endif %}
     </div>

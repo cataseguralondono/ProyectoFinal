@@ -68,7 +68,11 @@ class NegocioCreacion(CreateView):
     model = Negocio
     success_url = reverse_lazy("Inicio")
     template_name = "negocio_form.html"
-    fields = ['usuario', 'tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
+    fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
+
+    def form_valid(self, form, **kwargs):
+        form.instance.usuario_id = self.kwargs.get('pk')
+        return super(NegocioCreacion, self).form_valid(form)
 
 class NegocioDetalle(DetailView):
     model = Negocio
@@ -91,4 +95,14 @@ class NegocioLista(ListView):
     context_object_name = 'negocios'
     queryset = Negocio.objects.all()
     template_name = 'lista_negocios.html'
+
+class ComentarioNegocio(CreateView):
+    model = Comentario
+    template_name = 'comentario.html'
+    success_url = reverse_lazy('Inicio')
+    fields = ['titulo','descripcion']
+
+    def form_valid(self, form, **kwargs):
+        form.instance.negocio_id = self.kwargs.get('pk')
+        return super(ComentarioNegocio, self).form_valid(form)
 

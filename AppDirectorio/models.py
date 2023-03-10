@@ -22,12 +22,14 @@ class Negocio(models.Model):
     fecha_publicacion = models.DateField()
     imagen_negocio = models.ImageField()
 
-class Calificacion(models.Model):
-    calificacion = models.ForeignKey(Negocio, related_name='calificacion', on_delete=models.CASCADE, null=True)
-    nombre = models.CharField(max_length=100)
-    descripcion = models.TextField(null=True, blank=True)
-    fechaCalificacion = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.nombre_negocio
 
+class Comentario(models.Model):
+    negocio = models.ForeignKey(Negocio, related_name='comentario', on_delete=models.CASCADE, null=True)
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField(null=True, blank=True)
+    fecha_comentario = models.DateTimeField(auto_now_add=True)
 
 
 

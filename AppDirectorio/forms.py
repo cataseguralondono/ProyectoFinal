@@ -46,3 +46,13 @@ class NegocioCreacionFormulario(forms.Form):
         fields = ['usuario', 'tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
             #saca los mensajes de ayuda
         help_texts = {k: "" for k in fields}
+
+
+class ComentarioFormulario(forms.Form):
+    titulo = forms.CharField(max_length=100)
+    descripcion = forms.TextInput()
+    fechaCalificacion = forms.DateTimeField(label="Fecha Comentario")
+
+    class Meta:
+        model = Comentario
+        fields = ['titulo','descripcion','fechaCalificacion']
