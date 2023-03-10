@@ -40,7 +40,7 @@ def registro_usuarios(request):
     else:
         form = UsuarioRegistroForm()
     
-    return render(request, "registroUsuarios.html", {"form":form})
+    return render(request, "crear_usuarios.html", {"form":form})
 
 def inicio_sesion(request):
     if request.method == 'POST':
@@ -67,7 +67,7 @@ def inicio_sesion(request):
 class NegocioCreacion(CreateView):
     model = Negocio
     success_url = reverse_lazy("Inicio")
-    template_name = "negocio_form.html"
+    template_name = "crear_negocio.html"
     fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
 
     def form_valid(self, form, **kwargs):
@@ -77,24 +77,24 @@ class NegocioCreacion(CreateView):
 class NegocioDetalle(DetailView):
     model = Negocio
     context_object_name = 'negocio'
-    template_name = 'negocio_detalle.html'
+    template_name = 'detalle_negocio.html'
 
 class NegocioEdicion(UpdateView):
     model = Negocio
     success_url = reverse_lazy('Inicio')
-    template_name = 'negocio_edit.html'
+    template_name = 'editar_negocio.html'
     fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
 
 class NegocioEliminar(DeleteView):
     model = Negocio
     success_url = reverse_lazy('Lista Negocios')
     context_object_name = 'negocio'
-    template_name = 'negocio_eliminar.html'
+    template_name = 'eliminar_negocio.html'
 
 class NegocioLista(ListView):
     context_object_name = 'negocios'
     queryset = Negocio.objects.all()
-    template_name = 'lista_negocios.html'
+    template_name = 'listar_negocios.html'
 
 class ComentarioNegocio(CreateView):
     model = Comentario
