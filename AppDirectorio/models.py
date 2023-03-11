@@ -20,7 +20,7 @@ class Negocio(models.Model):
     telefono_contacto = models.CharField(max_length=200)
     email_contacto = models.EmailField()
     fecha_publicacion = models.DateField()
-    imagen_negocio = models.ImageField()
+    imagen_negocio = models.ImageField(upload_to="imagenes/")
 
     def __str__(self):
         return self.nombre_negocio
