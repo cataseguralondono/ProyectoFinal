@@ -1,16 +1,24 @@
 from django.contrib.auth import forms  
 from django.shortcuts import redirect, render  
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, DetailView, UpdateView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
+from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.views import PasswordChangeView
+
 
 from AppDirectorio.forms import *  
 # Create your views here.  
   
 def inicio(request):
     return render(request, 'inicio.html')
+
+def about_me(request):
+    return render(request, 'about_me.html')
+
+def confirmacion_password(request):
+    return render(request, 'confirmacion_cambio.html')
 
 """
 def registro(request):
@@ -71,12 +79,17 @@ class UsuarioEdicion(UpdateView):
 
     def get_object(self):
         return self.request.user
+    
+class CambioPassword(PasswordChangeView):
+    form_class = CambioPasswordForm
+    template_name = 'editar_contraseña.html'
+    success_url = reverse_lazy('Confirmacion Cambio')
 
 class NegocioCreacion(CreateView):
     model = Negocio
     success_url = reverse_lazy("Inicio")
     template_name = "crear_negocio.html"
-    fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
+    fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'imagen_negocio']
 
     def form_valid(self, form, **kwargs):
         form.instance.usuario_id = self.kwargs.get('pk')
@@ -91,7 +104,7 @@ class NegocioEdicion(UpdateView):
     model = Negocio
     success_url = reverse_lazy('Inicio')
     template_name = 'editar_negocio.html'
-    fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'fecha_publicacion', 'imagen_negocio']
+    fields = ['tipo_negocio', 'nombre_negocio', 'descripcion', 'direccion', 'horario','telefono_contacto', 'email_contacto', 'imagen_negocio']
 
 class NegocioEliminar(DeleteView):
     model = Negocio

@@ -21,9 +21,11 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for negocio in negocios %}
             <div class="col">
-                <div class="card shadow-sm">
+                <div class="card shadow-sm p-2 item-negocio">
                     {% if negocio.imagen_negocio %}
-                    <img class="bd-placeholder-img card-img-top" src="{{negocio.imagen_negocio.url}}"  width="100%" height="225">
+                    <div class="img-negocio" >
+                        <img class="bd-placeholder-img card-img-top" src="{{negocio.imagen_negocio.url}}" >
+                    </div>
                     {% endif %}
                     <div class="card-body">
                     <p class="card-text text-uppercase text-secondary">{{negocio.nombre_negocio}}</p>

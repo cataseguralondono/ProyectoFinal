@@ -14,12 +14,12 @@ class Negocio(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     tipo_negocio = models.CharField(max_length=15, choices=tipo_negocio_opciones, default='otro')
     nombre_negocio = models.CharField(max_length=100)
-    descripcion = models.CharField(max_length=500)
+    descripcion = models.TextField()
     direccion = models.CharField(max_length=250)
     horario = models.CharField(max_length=100)
     telefono_contacto = models.CharField(max_length=200)
     email_contacto = models.EmailField()
-    fecha_publicacion = models.DateField()
+    fecha_publicacion = models.DateField(auto_now_add=True)
     imagen_negocio = models.ImageField(upload_to="imagenes/")
 
     def __str__(self):

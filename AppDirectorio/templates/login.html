@@ -2,10 +2,6 @@
 {% load static %} 
 {% block contenidoQueCambia %}
 
-    {% if Mensaje %}  
-        {{Mensaje}} 
-    {% endif %}  
-
     {% if request.user.is_authenticated %}
     <div class="row justify-content-center">
         <div class="col-lg-8 col-xl-7">

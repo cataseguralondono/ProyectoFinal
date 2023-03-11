@@ -11339,7 +11339,6 @@ html {
 }
 
 .btn-xl {
-  padding: 1rem 1.75rem;
   font-size: 1.25rem;
 }
 
@@ -11504,6 +11503,34 @@ html {
   color: #fff;
 }
 
+.imagen-detalle img{
+  max-width: 100%;
+}
+
+.info-negocio p{
+  font-size: 17px;
+}
+
+.img-negocio{
+  max-height: 295px;
+  overflow: hidden;
+}
+
+.img-negocio img{
+  max-width: 100%;
+}
+
 .copyright {
   background-color: #1a252f;
 }
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #f6d365;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+  }

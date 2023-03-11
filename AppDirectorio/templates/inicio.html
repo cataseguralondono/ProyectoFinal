@@ -1,18 +1,20 @@
 {% extends "padre.html" %} 
 {% load static %} 
 {% block contenidoQueCambia %}
-    {% if Mensaje %}  
-        {{Mensaje}} 
-    {% endif %} 
 
-    <div class="container"></div>
+    <div class="container">
         {% if request.user.is_authenticated %}
-        <div class="container">
-        <li class="nav-item">
-            <span class="text-light"> Hola <strong>{{request.user.first_name}}</strong>!</span>
-            <a href="{% url 'Agregar Negocio' request.user.pk %}"><i class="bi bi-trash text-danger"></i>Agregar Negocio</a>
-            <a href="{% url 'Editar Usuario' %}"><i class="bi bi-trash text-danger"></i>Agregar Negocio</a>
-        </li>
+        <div class="container m-5">
+            <h4 class="mb-3">Hola {{request.user.first_name}}!</h4>
+            <p>En esta página puedes hacer que tu negocio sea visible para más personas y aumentar tus clientes y ganancias.</p>
+            <p>Una vez publiques tu negocio, puedes modificarlo, recibir comentarios de otras personas y si deseas, eliminarlo.</p>
+        </div>
+        {% else %}
+        <div class="container m-5">
+            <h4 class="mb-3">Hola!</h4>
+            <p>Registrate en nuestra página y haz que tu negocio tenga un mayor alcance.</p>
+        </div>
         {% endif %}
     </div>
+
 {% endblock %}

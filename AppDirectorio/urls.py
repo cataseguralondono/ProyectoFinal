@@ -6,6 +6,8 @@ urlpatterns = [
     path('',views.inicio, name="Inicio"),
     path('registroUsuarios', views.registro_usuarios, name="Registro"),
     path('editarUsuarios', views.UsuarioEdicion.as_view(), name="Editar Usuario"),
+    path('editarContraseña', views.CambioPassword.as_view(), name="Editar Contraseña"),
+    path('cambioContraseña', views.confirmacion_password, name="Confirmacion Cambio"),
     path('login', views.inicio_sesion, name="Login"),
     path('logout/', LogoutView.as_view(template_name='logout.html'), name='Logout'),
     path('crearNegocio/<int:pk>', views.NegocioCreacion.as_view(), name='Agregar Negocio'),
@@ -14,5 +16,6 @@ urlpatterns = [
     path('eliminarNegocio/<int:pk>/', views.NegocioEliminar.as_view(), name='Eliminar Negocio'),
     path('listarNegocios', views.NegocioLista.as_view(), name="Lista Negocios"),
     path('detalleNegocio/<int:pk>/comentario/', views.ComentarioNegocio.as_view(), name="Agregar Comentario"),
+    path('aboutMe',views.about_me, name='About Me')
 
 ]
