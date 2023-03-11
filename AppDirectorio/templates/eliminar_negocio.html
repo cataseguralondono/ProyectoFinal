@@ -1,17 +1,27 @@
-{% if user.id == negocio.usuario.id %}
+{% extends "padre.html" %} 
+{% load static %} 
+{% block contenidoQueCambia %}
 
-<div class="container text-center">
+    {% if Mensaje %}  
+        {{Mensaje}} 
+    {% endif %} 
 
-<form method="post">{% csrf_token %}
-    <h4>Estás seguro(a) que deseas borrar el negocio {{negocio.nombre_negocio}} ?</h4>
-    <p>
-        <button type="submit" class="btn btn-danger">Eliminar</button>
-    </p>
-</form>
+    {% if user.id == negocio.usuario.id %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7 mt-3">
+            <form method="post">{% csrf_token %}
+                <h4>Estás seguro(a) que deseas eliminar el negocio {{negocio.nombre_negocio}} ?</h4>
+                <p>
+                    <button type="submit" class="btn btn-primary btn-xl">Eliminar</button>
+                </p>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="container">
+    <h4>No tienes acceso a esta pagina!</h4>
+    </div>
+    {% endif %}
 
-</div>
-{% else %}
-<div class="container">
-<h4>No tienes acceso a esta pagina!</h4>
-</div>
-{% endif %}
+
+{% endblock %}

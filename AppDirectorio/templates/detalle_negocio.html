@@ -1,17 +1,51 @@
-<div class="container">
+{% extends "padre.html" %} 
+{% load static %} 
+{% block contenidoQueCambia %}
 
-    <p><h4>{{negocio.nombre_negocio}}</h4></p>
-    {% if negocio.imagen_negocio %}
-        <p>Aqui va una imagen jajaja</p>
-        <p><img src="{{negocio.imagen_negocio.url}}" alt=""></p>
-    {% endif %}
-    <p>Tipo Negocio: {{negocio.tipo_negocio}}</p>
-    <p>Descripcion: {{negocio.descripcion}}</p>
-    <p>Direccion: {{negocio.direccion}}</p>
-    <p>Horario: {{negocio.horario}}</p>
-    <p>Teléfono de Contacto: {{negocio.telefono_contacto}}</p>
-    <p>Email de Contacto: {{negocio.email_contacto}}</p>
-    <p>Fecha Publicación: {{negocio.fecha_publicacion}}</p>
-    
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 mt-3">{{negocio.nombre_negocio}}</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="form-floating mb-3">
+            {% if negocio.imagen_negocio %}
+                <p><img src="{{negocio.imagen_negocio.url}}" alt=""></p>
+            {% endif %}
+            <p>Tipo Negocio: {{negocio.tipo_negocio}}</p>
+            <p>Descripcion: {{negocio.descripcion}}</p>
+            <p>Direccion: {{negocio.direccion}}</p>
+            <p>Horario: {{negocio.horario}}</p>
+            <p>Teléfono de Contacto: {{negocio.telefono_contacto}}</p>
+            <p>Email de Contacto: {{negocio.email_contacto}}</p>
+            <p>Fecha Publicación: {{negocio.fecha_publicacion}}</p>
+        </div>
+        <div class="form-floating mb-3">
+            <div class="container">
+                {% if not negocio.comentario.all %}
+                    No han comentado este negocio
+                {% else %}
+                    <div class="list-group w-auto mb-2">
+                        {% for c in negocio.comentario.all %}
+                        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                            <img src="{% static 'assets/img/comentarios.png' %}" alt="" width="30" height="30" >
+                            <div class="d-flex gap-2 w-100 justify-content-between">
+                              <div>
+                                <h6 class="mb-0">{{c.titulo}}</h6>
+                                <p class="mb-0 opacity-75">{{c.descripcion}}</p>
+                              </div>
+                              <small class="opacity-50 text-nowrap">{{c.fecha_comentario}}</small>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <a href="{% url 'Agregar Comentario' negocio.pk %}">Agregar un Comentario</a>
+            </div>
+        </div>
+    </div>
 </div>
-<a href="{% url 'Agregar Comentario' negocio.pk %}"><i class="bi bi-trash text-danger"></i>Agregar Calificacion</a>
+{% endblock %}

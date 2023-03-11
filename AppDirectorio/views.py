@@ -64,6 +64,14 @@ def inicio_sesion(request):
     form = AuthenticationForm()
     return render(request, "login.html", {'form':form})
 
+class UsuarioEdicion(UpdateView):
+    form_class = UsuarioEdicionForm
+    template_name= 'editar_usuario.html'
+    success_url = reverse_lazy('Inicio')
+
+    def get_object(self):
+        return self.request.user
+
 class NegocioCreacion(CreateView):
     model = Negocio
     success_url = reverse_lazy("Inicio")

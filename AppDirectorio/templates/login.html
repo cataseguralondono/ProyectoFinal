@@ -1,20 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "padre.html" %} 
+{% load static %} 
+{% block contenidoQueCambia %}
+
     {% if Mensaje %}  
         {{Mensaje}} 
     {% endif %}  
 
-    <form action="" method="POST">
-        {% csrf_token %}
-            {{ form.as_p }}
-        <button type="submit"> Iniciar Sesión </button>
-    </form>
-</body>
-</html>
+    {% if request.user.is_authenticated %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 mt-3">Ya hay una sesión iniciada!</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 mt-3">Login</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <form action="" method="POST">{% csrf_token %}
+                <div class="form-floating mb-3"></div>
+                <table class="form-floating mb-3">
+
+                    {{form.as_table}}
+
+                </table>
+
+                <input class="btn btn-primary btn-xl" type="submit" value="Iniciar Sesión">
+                <div class="form-floating mb-3"></div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
