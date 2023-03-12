@@ -20,22 +20,6 @@ def about_me(request):
 def confirmacion_password(request):
     return render(request, 'confirmacion_cambio.html')
 
-"""
-def registro(request):
-    if request.POST == 'POST':
-        form = UsuarioForm(request.POST) 
-        
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            form.save()  
-            return render(request, "inicio.html", {"mensaje": "Usuario Creado: "})
-
-    else:  
-        form = UsuarioForm()
-
-    return render(request, 'registroUsuarios.html', {"form":form}) 
-"""
-
 def registro_usuarios(request):
     if request.method == 'POST':
         form = UsuarioRegistroForm(request.POST)
